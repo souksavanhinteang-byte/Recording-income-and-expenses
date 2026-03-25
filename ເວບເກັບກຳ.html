@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker - ບັນທືກລາຍຮັບລາຍຈ່າຍ</title>
+    <link rel="stylesheet" href="ຕົກແຕ່ງ.css">
+
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💰 Expense Tracker</h1>
+            <p>ຈົດບັນທືກລາຍຈ່າຍລາຍຮັບ</p>
+        </div>
+
+        <div class="content">
+            <!-- สรุปข้อมูล -->
+            <div class="summary-cards">
+                <div class="card income">
+                    <div class="card-label">ລາຍຮັບທັງໝົດ</div>
+                    <div class="card-value" id="totalIncome">₭0</div>
+                </div>
+                <div class="card expense">
+                    <div class="card-label">ລາຍຈ່າຍທັງໝົດ</div>
+                    <div class="card-value" id="totalExpense">₭0</div>
+                </div>
+                <div class="card balance">
+                    <div class="card-label">ເງິນທີເຫຼືອ</div>
+                    <div class="card-value" id="balance">₭0</div>
+                </div>
+            </div>
+
+            <!-- ฟอร์มเพิ่มข้อมูล -->
+            <div class="form-section">
+                <h2>➕ ເພີ່ມລາຍການໃໝ່</h2>
+                <div class="form-group">
+                    <input type="text" id="description" placeholder="ລາຍລະອຽດ">
+                    <input type="number" id="amount" placeholder="ຈຳນວນເງິນ" min="0" step="0.01">
+                    <select id="category">
+                        <option value="ອາຫານ">🍽️ ອາຫານ</option>
+                        <option value="ນໍ້າມັນ">🚗 ນໍ້າມັນ</option>
+                        <option value="ຢາ(ມ້າ)">🏥 ຢາ(ມ້າ)</option>
+                        <option value="ເກມ">🎮 ເກມ</option>
+                        <option value="ການຮຽນ">📚ການຮຽນ</option>
+                        <option value="ເຄື່ອງນຸ່ງຫົ່ມ">👕ເຄື່ອງນຸ່ງຫົ່ມ</option>
+                        <option value="ຄ່າຝາກລົດ">🚗 ຄ່າຝາກລົດ </option>
+                        <option value="ອື່ນໆ">ອື່ນໆ</option>
+                    </select>
+                    <select id="type">
+                        <option value="expense">💸ລາຍຈ່າຍ</option>
+                        <option value="income">💵ລາຍຮັບ</option>
+                    </select>
+                </div>
+                <div class="button-group">
+                    <button class="btn-add" onclick="addTransaction()">ບັກທືກ</button>
+                    <button class="btn-clear" onclick="clearForm()">ລ້າງ</button>
+                </div>
+            </div>
+
+            <!-- แสดงรายการ -->
+            <div class="transactions-section">
+                <h2>📋 ລາຍການບັນທືກ</h2>
+                <div class="filter-buttons">
+                    <button class="active" onclick="filterTransactions('all')">ທັງໝົດ</button>
+                    <button onclick="filterTransactions('income')">ລາຍຮັບ</button>
+                    <button onclick="filterTransactions('expense')">ລາຍຈ່າຍ</button>
+                </div>
+
+                <div class="table-wrapper">
+                    <table id="transactionTable">
+                        <thead>
+                            <tr>
+                                <th>ວັນທີ</th>
+                                <th>ລາຍລະອຽດ</th>
+                                <th>ໝວດໝູ່</th>
+                                <th>ປະເພດ</th>
+                                <th>ຈຳນວນ</th>
+                                <th>ລົບ</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transactionBody">
+                        </tbody>
+                    </table>
+                </div>
+                <div id="emptyState" class="empty-state" style="display: none;">
+                    <p>📭 ຍັງບໍມີລາຍການ</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="ລະບົບ.js"></script>
+</body>
+</html>
